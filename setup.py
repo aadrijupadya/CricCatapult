@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.1'
+VERSION = '0.0.3'
 DESCRIPTION = 'Package for cricket analytics'
 LONG_DESCRIPTION = 'Visualizaiton, Analysis, and more (will add later)'
 
@@ -22,7 +22,7 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     install_requires=['pandas', 'numpy', 'matplotlib',
-                      'requests', 'bs4', 'geocoder', 'folium', 'geopandas', 'seaborn', 'pygame', 'ssl', 'zipfile', 'io'],
+                      'requests', 'bs4', 'geocoder', 'folium', 'geopandas', 'seaborn', 'pygame', 'pipwin', 'gdal', 'fiona', 'shapely'],
     keywords=['python', 'cricket', 'sports analytics',
               'data analytics', 'visualiation', 'geospatial data', 'GIS'],
     classifiers=[

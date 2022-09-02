@@ -8,6 +8,7 @@ folium
 geopandas
 seaborn
 pygame
-ssl
-zipfile
-io
+pipwin
+gdal
+fiona
+shapely
