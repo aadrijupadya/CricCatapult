@@ -1,0 +1,13 @@
+pandas
+numpy
+matplotlib
+requests
+bs4
+geocoder
+folium
+geopandas
+seaborn
+pygame
+ssl
+zipfile
+io

@@ -26,8 +26,8 @@ setup(
     keywords=['python', 'cricket', 'sports analytics',
               'data analytics', 'visualiation', 'geospatial data', 'GIS'],
     classifiers=[
-        "Development Status :: 2 - Production",
-        "Intended Audience :: Sports Analysts/General Fans",
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Science/Research",
         "Programming Language :: Python :: 3",
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",

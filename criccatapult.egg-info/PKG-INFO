@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: criccatapult
+Version: 0.0.1
+Summary: Package for cricket analytics
+Author: Aadrij Upadya, Pradyum Chitlu
+Author-email: <adrij2005@gmail.com>
+Keywords: python,cricket,sports analytics,data analytics,visualiation,geospatial data,GIS
+Classifier: Development Status :: 2 - Production
+Classifier: Intended Audience :: Sports Analysts/General Fans
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+
+
+# CricCatapult
+
+#### A novel data package with a focus on data visualization, easy access to data, and data analysis
