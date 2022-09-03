@@ -42,4 +42,4 @@ class Location(object):
 
 
 print(Location("1329821").get_location())
-print(Location("1329821").get_map())
+Location("1329821").get_map()
