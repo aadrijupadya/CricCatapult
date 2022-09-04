@@ -4,6 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to CricCatapult's documentation!
+CricCatapult is an open-source API wrapper and data aggregator merged into an open-source python package. 
 ========================================
 
 .. toctree::
