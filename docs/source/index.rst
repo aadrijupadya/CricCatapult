@@ -6,9 +6,6 @@
 Welcome to CricCatapult's documentation!
 ========================================
 
-CricCatapult is an open-source API wrapper and data aggregator merged into an open-source python package. 
-========================================
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
@@ -18,6 +15,6 @@ CricCatapult is an open-source API wrapper and data aggregator merged into an op
 Indices and tables
 ==================
 
-* :doc:`/source/install.rst`
-* :ref:`modindex`
+* :ref:`installation`
+* :ref:`classes`
 * :ref:`search`
