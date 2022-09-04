@@ -18,6 +18,6 @@ CricCatapult is an open-source API wrapper and data aggregator merged into an op
 Indices and tables
 ==================
 
-* :ref:`genindex`
+* :ref:`install`
 * :ref:`modindex`
 * :ref:`search`
