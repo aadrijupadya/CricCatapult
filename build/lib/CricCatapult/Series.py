@@ -166,16 +166,6 @@ class Series(object):
         df = pd.read_html(url)[0]
         return df
 
-    def get_wagon_wheel(self):
-        url = f"https://www.espncricinfo.com/series/series-name-{self.series_id}/match-name-{self.match_id}/match-statistics"
-        self.page = requests.get(url)
-        self.soup = BeautifulSoup(self.page.content, "html.parser")
-        results = self.soup.find(id="__next")
-        job_elements = results.find_all(
-            "svg")
-
-        print(job_elements)
-
     def get_bowler_analysis(self):
         url = f"https://www.espncricinfo.com/series/series-name-{self.series_id}/match-name-{self.match_id}/match-statistics"
         self.page = requests.get(url)
@@ -358,5 +348,5 @@ class Series(object):
         return pitch
 
 
-print(Series(1327237, 1327270).pitchmap([1.62, 1.65, 1.64, 0.89, 0.92], [
-      11.89, 10.47, 10.2, 11.33, 10.57], [140.91, 130.05, 132.21, 133.27, 139.75]))
+# depending on IDE, might need to print or not
+print(Series(1327237, 1327270).get_results_by_year(2020, 1))

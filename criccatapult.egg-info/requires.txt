@@ -3,10 +3,7 @@ numpy
 matplotlib
 requests
 bs4
-geocoder
 folium
 seaborn
 pygame
-pipwin
-fiona
 shapely

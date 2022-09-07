@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: criccatapult
-Version: 0.0.3
+Version: 0.0.5
 Summary: Package for cricket analytics
 Author: Aadrij Upadya, Pradyum Chitlu
 Author-email: <adrij2005@gmail.com>
@@ -17,3 +17,7 @@ Description-Content-Type: text/markdown
 # CricCatapult
 
 #### A novel data package with a focus on data visualization, easy access to data, and data analysis
+
+Packaging is still in progress (most likely will not work) https://pypi.org/project/criccatapult/0.0.3
+
+### To run/test out this package, simply clone the project and run it locally.

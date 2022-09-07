@@ -23,19 +23,19 @@ class Player(object):
         self.temp_page = requests.get(self.temp_url)
         self.temp_soup = BeautifulSoup(self.temp_page.content, "html.parser")
 
-    def get_format_df(self, format_num, view):
+    def get_format_df(self, format_num, view, action):
         df = pd.read_html(
-            f'https://stats.espncricinfo.com/ci/engine/player/{self.player_id}.html?class={format_num};template=results;type=batting;view={view}')[3]
+            f'https://stats.espncricinfo.com/ci/engine/player/{self.player_id}.html?class={format_num};template=results;type={action};view={view}')[3]
         return df
 
-    def get_summary_stats(self, format_num, view):
+    def get_summary_stats(self, format_num, view, action):
         summary_df = pd.read_html(
-            f'https://stats.espncricinfo.com/ci/engine/player/{self.player_id}.html?class={format_num};template=results;type=batting;view={view}')[2]
+            f'https://stats.espncricinfo.com/ci/engine/player/{self.player_id}.html?class={format_num};template=results;type={action};view={view}')[2]
         return summary_df
 
-    def get_overall_df(self, type_num, view):
+    def get_overall_df(self, type_num, view, action):
         overall_df = pd.read_html(
-            f'https://stats.espncricinfo.com/ci/engine/player/{self.player_id}.html?class=11;template=results;type=batting;view={view}')[type_num]
+            f'https://stats.espncricinfo.com/ci/engine/player/{self.player_id}.html?class=11;template=results;type={action};view={view}')[type_num]
         return overall_df
 
     def get_career_df(self):
@@ -99,18 +99,6 @@ class Player(object):
                 text_list.remove(i)
         return text_list
 
-    def get_records(self):
-        results = self.temp_soup.find(id="__next")
-        job_elements = results.find_all(
-            "div", class_="ds-grid lg:ds-grid-cols-2 ds-bg-fill-content-prime")
-        print(job_elements)
-        text_list = []
-        for job_element in job_elements:
-            for i in job_element:
-                for element in i:
-                    text_list.append(element)
-        return text_list
-
     def get_overview_df(self, pos):
         df = pd.read_html(
             f'https://www.espncricinfo.com/player/player-name-{self.player_id}')[pos]
@@ -118,23 +106,3 @@ class Player(object):
 
 
 print(Player('Mithali Raj').get_description())
-
-# player = 'Virat Kohli'
-# url = "http://search.espncricinfo.com/ci/content/player/search.html?search=" + \
-#     player.lower().replace(" ", "+") + "&x=0&y=0"
-# page = requests.get(url)clear
-
-# soup = BeautifulSoup(page.content, "html.parser")
-
-# format = 1
-
-# format_name = ""
-# if format == 1:
-#     format_name = "Tests"
-# elif format == 2:
-#     format_name = "ODIs"
-# else:
-#     format_name = "T20s"
-
-
-# print(df.shape)
