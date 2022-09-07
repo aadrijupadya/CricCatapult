@@ -5,10 +5,8 @@ requests
 bs4
 geocoder
 folium
-geopandas
 seaborn
 pygame
 pipwin
-gdal
 fiona
 shapely

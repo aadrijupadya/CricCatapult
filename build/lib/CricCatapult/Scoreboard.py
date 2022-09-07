@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import requests
 from bs4 import BeautifulSoup
 import geocoder
-import geopandas
+
 class Scoreboard(object):
     
     def __init__(self):
