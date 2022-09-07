@@ -1,6 +1,6 @@
 # CricCatapult
 
-#### A novel data package with a focus on data visualization, easy access to data, and data analysis
+#### A novel cricket data package with a focus on data visualization, easily accessible data, and data analysis
 
 Packaging: https://pypi.org/project/criccatapult/0.0.5/
 
