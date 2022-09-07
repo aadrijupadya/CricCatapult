@@ -22,7 +22,7 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     install_requires=['pandas', 'numpy', 'matplotlib',
-                      'requests', 'bs4', 'geocoder', 'folium', 'geopandas', 'seaborn', 'pygame', 'pipwin', 'gdal', 'fiona', 'shapely'],
+                      'requests', 'bs4', 'folium', 'seaborn', 'pygame', 'fiona', 'shapely'],
     keywords=['python', 'cricket', 'sports analytics',
               'data analytics', 'visualiation', 'geospatial data', 'GIS'],
     classifiers=[
