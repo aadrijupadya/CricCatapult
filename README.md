@@ -11,3 +11,7 @@ pip3 install CricCatapult==0.0.5
 ```
 
 Due to API problems, the geography classes (Location, etc.) do not work with the current packaging. However, the rest of the classes are bug-free.
+
+
+### Documentation
+https://criccatapult.readthedocs.io/en/latest/
