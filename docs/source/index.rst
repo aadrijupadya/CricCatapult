@@ -9,6 +9,19 @@ Welcome to CricCatapult's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+Scroll down to view documentation.
+
+Available Documentation:
+Scoreboard
+Cricsheet
+
+In Progress Documentation:
+Series
+Player
+Records
+Location
+
 
 Scoreboard Class
 ==================
