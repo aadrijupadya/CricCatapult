@@ -10,15 +10,6 @@ Welcome to CricCatapult's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`installation`
-* :ref:`classes`
-* :ref:`search`
-
 Scoreboard Class
 ==================
 .. py:function:: scores()
