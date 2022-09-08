@@ -15,3 +15,5 @@ Due to API problems, the geography classes (Location, etc.) do not work with the
 
 ### Documentation
 https://criccatapult.readthedocs.io/en/latest/
+
+### Submitted to CMSAC 2022
