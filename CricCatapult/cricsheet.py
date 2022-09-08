@@ -406,7 +406,7 @@ class Cricsheet(object):
                 link = requests.get(link)
                 zip = zipfile.ZipFile(io.BytesIO(link.content))
                 zip.extractall()
-        if gender == "women" or gender == "women":
+        if gender == "women" or gender == "female":
             if days == 2:
                 link = "https://cricsheet.org/downloads/recently_added_2_female.zip"
                 link = requests.get(link)
