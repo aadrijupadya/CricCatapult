@@ -13,14 +13,10 @@ Welcome to CricCatapult's documentation!
 Scroll down to view documentation.
 
 Available Documentation:
-Scoreboard
-Cricsheet
+Scoreboard and Cricsheet
 
 In Progress Documentation:
-Series
-Player
-Records
-Location
+Series, Player, Records, Location
 
 
 Scoreboard Class
