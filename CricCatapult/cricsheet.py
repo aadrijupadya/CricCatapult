@@ -184,7 +184,7 @@ class Cricsheet(object):
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
-    def caribbeanleague_csv(self):
+    def caribbeanleague_csv2(self):
         link = "https://cricsheet.org/downloads/cpl_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
