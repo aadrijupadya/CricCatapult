@@ -105,4 +105,4 @@ class Player(object):
         return df
 
 
-print(Player('Mithali Raj').get_description())
+# print(Player('Mithali Raj').get_description())

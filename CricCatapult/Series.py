@@ -349,4 +349,4 @@ class Series(object):
 
 
 # depending on IDE, might need to print or not
-print(Series(1327237, 1327270).get_results_by_year(2020, 1))
+# print(Series(1327237, 1327270).get_results_by_year(2020, 1))

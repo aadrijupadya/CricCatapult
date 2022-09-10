@@ -39,6 +39,6 @@ class Scoreboard(object):
         return df
 
 
-print(Scoreboard().scores()[0])
-print(Scoreboard().scores()[1])
-print(Scoreboard().scores()[2])
+# print(Scoreboard().scores()[0])
+# print(Scoreboard().scores()[1])
+# print(Scoreboard().scores()[2])

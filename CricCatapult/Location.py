@@ -41,5 +41,5 @@ class Location(object):
         return map
 
 
-print(Location("1329821").get_location())
-Location("1329821").get_map()
+# print(Location("1329821").get_location())
+# Location("1329821").get_map()
