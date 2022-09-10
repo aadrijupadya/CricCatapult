@@ -83,4 +83,4 @@ class Records(object):
         return df
 
 
-print(Records().get_psl_records("batting", "most_runs_career"))
+# print(Records().get_psl_records("batting", "most_runs_career"))

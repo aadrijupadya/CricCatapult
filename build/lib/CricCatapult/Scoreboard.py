@@ -5,13 +5,14 @@ import requests
 from bs4 import BeautifulSoup
 import geocoder
 
+
 class Scoreboard(object):
-    
+
     def __init__(self):
-        self.url ="https://www.espncricinfo.com/live-cricket-score"
+        self.url = "https://www.espncricinfo.com/live-cricket-score"
         self.page = requests.get(self.url)
         self.soup = BeautifulSoup(self.page.content, 'html.parser')
-        
+
     def scores(self):
         data = self.soup.find_all("div", class_="ds-px-4 ds-py-3")
         text_list = []
@@ -23,7 +24,7 @@ class Scoreboard(object):
             if i == '':
                 text_list.remove(i)
         return pd.Series(text_list)
-    
+
     def scores_df(self):
         data = self.soup.find_all("div", class_="ds-px-4 ds-py-3")
         text_list = []
@@ -34,10 +35,10 @@ class Scoreboard(object):
         for i in text_list:
             if i == '':
                 text_list.remove(i)
-        df = pd.Series(text_list).str.split(pat=",", expand=True )
+        df = pd.Series(text_list).str.split(pat=",", expand=True)
         return df
 
 
-print(Scoreboard().scores()[0])
-print(Scoreboard().scores()[1])
-print(Scoreboard().scores()[2])
+# print(Scoreboard().scores()[0])
+# print(Scoreboard().scores()[1])
+# print(Scoreboard().scores()[2])

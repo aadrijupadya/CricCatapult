@@ -6,21 +6,25 @@ import zipfile
 import io
 from bs4 import BeautifulSoup
 
+
 class Cricsheet(object):
     def __init__(self):
         self.url = "https://cricsheet.org/downloads/"
         self.page = requests.get(self.url)
         self.soup = BeautifulSoup(self.page.content, "html.parser")
+
     def all_matches_json(self):
         link = "https://cricsheet.org/downloads/all_json.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def all_matches_yaml(self):
         link = "https://cricsheet.org/downloads/all.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def all_matches_csv(self, gender):
         if gender == "male":
             link = "https://cricsheet.org/downloads/all_male_csv.zip"
@@ -37,6 +41,7 @@ class Cricsheet(object):
             link = requests.get(link)
             zip = zipfile.ZipFile(io.BytesIO(link.content))
             zip.extractall()
+
     def all_matches_csv2(self, gender):
         if gender == "male":
             link = "https://cricsheet.org/downloads/all_male_csv2.zip"
@@ -53,6 +58,7 @@ class Cricsheet(object):
             link = requests.get(link)
             zip = zipfile.ZipFile(io.BytesIO(link.content))
             zip.extractall()
+
     def test_matches_csv(self, gender):
         if gender == "male" or gender == "men":
             link = "https://cricsheet.org/downloads/tests_male_csv.zip"
@@ -69,6 +75,7 @@ class Cricsheet(object):
             link = requests.get(link)
             zip = zipfile.ZipFile(io.BytesIO(link.content))
             zip.extractall()
+
     def test_matches_csv2(self, gender):
         if gender == "male" or gender == "men":
             link = "https://cricsheet.org/downloads/tests_male_csv2.zip"
@@ -85,6 +92,7 @@ class Cricsheet(object):
             link = requests.get(link)
             zip = zipfile.ZipFile(io.BytesIO(link.content))
             zip.extractall()
+
     def odi_csv(self, gender):
         if gender == "male" or gender == "men":
             link = "https://cricsheet.org/downloads/odis_male_csv.zip"
@@ -101,6 +109,7 @@ class Cricsheet(object):
             link = requests.get(link)
             zip = zipfile.ZipFile(io.BytesIO(link.content))
             zip.extractall()
+
     def odi_csv2(self, gender):
         if gender == "male" or gender == "men":
             link = "https://cricsheet.org/downloads/odis_male_csv2.zip"
@@ -117,6 +126,7 @@ class Cricsheet(object):
             link = requests.get(link)
             zip = zipfile.ZipFile(io.BytesIO(link.content))
             zip.extractall()
+
     def t20_csv(self, gender):
         if gender == "male" or gender == "men":
             link = "https://cricsheet.org/downloads/t20s_male_csv.zip"
@@ -133,6 +143,7 @@ class Cricsheet(object):
             link = requests.get(link)
             zip = zipfile.ZipFile(io.BytesIO(link.content))
             zip.extractall()
+
     def t20_csv2(self, gender):
         if gender == "male" or gender == "men":
             link = "https://cricsheet.org/downloads/t20s_male_csv2.zip"
@@ -149,96 +160,115 @@ class Cricsheet(object):
             link = requests.get(link)
             zip = zipfile.ZipFile(io.BytesIO(link.content))
             zip.extractall()
+
     def afghanleague_csv(self):
         link = "https://cricsheet.org/downloads/apl_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def afghanleague_csv2(self):
         link = "https://cricsheet.org/downloads/apl_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def bigbashleague_csv(self):
         link = "https://cricsheet.org/downloads/bbl_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def bigbashleague_csv2(self):
         link = "https://cricsheet.org/downloads/bbl_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def bangladeshleague_csv(self):
         link = "https://cricsheet.org/downloads/bpl_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def bangladeshleague_csv2(self):
         link = "https://cricsheet.org/downloads/bpl_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def caribbeanleague_csv(self):
         link = "https://cricsheet.org/downloads/cpl_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
-    def caribbeanleague_csv(self):
+
+    def caribbeanleague_csv2(self):
         link = "https://cricsheet.org/downloads/cpl_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def IPL_csv(self):
         link = "https://cricsheet.org/downloads/ipl_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def IPL_csv2(self):
         link = "https://cricsheet.org/downloads/ipl_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def lankaleague_csv(self):
         link = "https://cricsheet.org/downloads/lpl_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def lankaleague_csv2(self):
         link = "https://cricsheet.org/downloads/lpl_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def pakistanleague_csv(self):
         link = "https://cricsheet.org/downloads/psl_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def pakistanleague_csv2(self):
         link = "https://cricsheet.org/downloads/psl_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def womensbigbashleague_csv(self):
         link = "https://cricsheet.org/downloads/wbb_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def womensbigbashleague_csv2(self):
         link = "https://cricsheet.org/downloads/wbb_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def womenst20_csv(self):
         link = "https://cricsheet.org/downloads/wtc_csv.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def womenst20_csv2(self):
         link = "https://cricsheet.org/downloads/wtc_csv2.zip"
         link = requests.get(link)
         zip = zipfile.ZipFile(io.BytesIO(link.content))
         zip.extractall()
+
     def recent_csv(self, gender, days):
         if gender == "both" or gender == "all":
             if days == 2:
@@ -288,7 +318,7 @@ class Cricsheet(object):
                 link = requests.get(link)
                 zip = zipfile.ZipFile(io.BytesIO(link.content))
                 zip.extractall()
-                
+
     def recent_csv2(self, gender, days):
         if gender == "both" or gender == "all":
             if days == 2:
@@ -406,7 +436,7 @@ class Cricsheet(object):
                 link = requests.get(link)
                 zip = zipfile.ZipFile(io.BytesIO(link.content))
                 zip.extractall()
-        if gender == "women" or gender == "women":
+        if gender == "women" or gender == "female":
             if days == 2:
                 link = "https://cricsheet.org/downloads/recently_added_2_female.zip"
                 link = requests.get(link)
@@ -438,4 +468,4 @@ class Cricsheet(object):
                 link = requests.get(link)
                 zip = zipfile.ZipFile(io.BytesIO(link.content))
                 zip.extractall()
-Cricsheet().recent_csv(gender="women", days=7)
+# Cricsheet().recent_csv(gender="women", days=7)
