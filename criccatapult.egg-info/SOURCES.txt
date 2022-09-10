@@ -1,5 +1,6 @@
 README.md
 setup.py
+CricCatapult/Cricsheet.py
 CricCatapult/Location.py
 CricCatapult/Player.py
 CricCatapult/Records.py
