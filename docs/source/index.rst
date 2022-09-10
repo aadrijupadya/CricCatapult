@@ -171,3 +171,32 @@ Recent Match Data
       days : 2 for csv files from the past 2 days.
              7 for csv files from the past 7 days.
              30 for csv files from the past 30 days.
+Player Class
+==================
+.. py:function:: __init__(self, player_name)
+
+   The object is initalized using a player name, passed in as a string.
+   
+.. py:function:: get_format_df(self, format_num, view, action)
+   Parameters: 
+      format_num: integer that specifies the match format from which you want data from. 
+         1: test data
+         2: ODI data
+         3: T-20 data
+      view: specifies the view of the data (match-by-match, inning-by-inning, partnership, etc.)
+         'innings': returns inning-by-inning data
+         'match': returns match-by-match data
+         'cumulative': returns cumulative data (running total of runs/wickets/etc.)
+         'series': returns series-by-series data
+         'tour': returns data from tours only (any time player's team travels to another nation to play a series)
+         'ground': returns ground-by-ground data
+         (BATTING SUBSET ONLY) 'fow_summary': returns batsman partnership data 
+         (BATTING SUBSET ONLY) 'fow_list': returns list of batting partnerships and corresponding data
+         (BATTING SUBSET ONLY) 'fow_list': returns list of dismissal history
+
+         
+               
+
+.. py:functionth::
+
+   
