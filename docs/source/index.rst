@@ -176,6 +176,7 @@ Player Class
          2: ODI data
          3: T-20 data
       view : specifies the view of the data (match-by-match, inning-by-inning, partnership, etc.)
+      
          'innings' : returns inning-by-inning data
          
          'match' : returns match-by-match data
@@ -192,5 +193,35 @@ Player Class
          
          (BATTING SUBSET ONLY) 'fow_list' : returns list of batting partnerships and corresponding data
          
-         (BATTING SUBSET ONLY) 'fow_list' : returns list of dismissal history
+         (BATTING/FIELDING SUBSET ONLY) 'dismissal_history' : returns list of dismissal history
+         
+         (BATTING/FIELDING SUBSET ONLY) 'bowler_summary' : returns list of bowler statistics against a particular batter
+         
+         (BATTING SUBSET ONLY) 'fielder_summary' : returns list of dismissal by fielder
+
+         (BOWLING SUBSET ONLY) 'wickets_summary' : returns summary of types of deliveries on wicket balls, 
+         
+         (BOWLING/FIELDING SUBSET ONLY) 'batter_dismissed' : returns list of batters dismissed by bowler
+         
+         (BOWLING SUBSET ONLY) 'fielder_summary' : returns list of fielders that have contributed to dismissal by bowler (through catch or stumping)
+         
+         (BOWLING/FIELDING SUBSET ONLY) 'dismissal_list' : returns details for each dismissal by bowler
+         
+         (ALL ROUNDER SUBSET ONLY) 'awards_series' : returns any series awards a player one (if applicable)
+         
+         (ALL ROUNDER SUBSET ONLY) 'results' : returns match by match results in every game a player was invovled in
+         
+         (ALL ROUNDER SUBSET ONLY) 'awards_match' : returns any match awards a player one (if applicable)
+         
+         
+
+      action : specifies analysis type with respect to action (batting, bowling, fielding)
+      
+         'batting' : returns batting statistics
+         
+         'bowling' : returns bowling statistics
+         
+         'fielding' : returns fielding statistics (catches, stumps, etc.)
+         
+         'allround' : returns all-rounder statistics
          
