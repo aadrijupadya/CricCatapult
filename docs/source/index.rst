@@ -42,49 +42,41 @@ Cricsheet Class
 .. py:function:: all_matches_csv(gender)
 
    Parameters:
-   
       gender : "male" or "female" for matches only for that gender, or "all" for all matches in csv format.
 
 .. py:function:: all_matches_csv2(gender)
 
    Parameters:
-   
       gender : "male" or "female" for matches only for that gender, or "all" for all matches in a different csv format.
 
 .. py:function:: test_matches_csv(gender)
 
    Parameters:
-   
       gender : "male" or "female" for test matches only for that gender, or "all" for all test matches in csv format.
       
 .. py:function:: test_matches_csv2(gender)
 
    Parameters:
-   
       gender : "male" or "female" for test matches only for that gender, or "all" for all test matches in a different csv format.
 
 .. py:function:: odi_csv(gender)
 
    Parameters:
-   
       gender : "male" or "female" for odi matches only for that gender, or "all" for all odi matches in csv format.
 
 .. py:function:: odi_csv2(gender)
 
    Parameters:
-   
       gender : "male" or "female" for odi matches only for that gender, or "all" for all odi matches in a different csv format.
       
 .. py:function:: t20_csv(gender)
 
    Parameters:
-   
       gender : "male" or "female" for T20 matches only for that gender, or "all" for all T20 matches in csv format.
 
 .. py:function:: t20_csv2(gender)
 
    Parameters:
-   
       gender : "male" or "female" for T20 matches only for that gender, or "all" for all T20 matches in a different csv format.
 
 Domestic League Data
@@ -163,7 +155,6 @@ Recent Match Data
 .. py:function:: recent_csv(gender, days)
 
    Parameters:
-   
       gender : "male" or "men" for recent mens cricket matches.
                "women" or "female" for recent womens cricket matches.
                "all" or "both" for recent matches from both genders.
@@ -193,10 +184,3 @@ Player Class
          (BATTING SUBSET ONLY) 'fow_summary': returns batsman partnership data 
          (BATTING SUBSET ONLY) 'fow_list': returns list of batting partnerships and corresponding data
          (BATTING SUBSET ONLY) 'fow_list': returns list of dismissal history
-
-         
-               
-
-.. py:functionth::
-
-   
