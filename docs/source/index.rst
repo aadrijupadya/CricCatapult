@@ -170,11 +170,13 @@ Player Class
    
 .. py:function:: get_format_df(self, format_num, view, action)
 
+   This function returns numerous individual player data (through a dataframe) that covers all formats, all actions (batting, bowling, fielding), and a   variety of views   (partnership by partnership, dismissal by dismissal, ground by ground, etc.)
    Parameters: 
       format_num : integer that specifies the match format from which you want data from. 
          1: test data
          2: ODI data
          3: T-20 data
+         
       view : specifies the view of the data (match-by-match, inning-by-inning, partnership, etc.)
       
          'innings' : returns inning-by-inning data
@@ -213,8 +215,6 @@ Player Class
          
          (ALL ROUNDER SUBSET ONLY) 'awards_match' : returns any match awards a player one (if applicable)
          
-         
-
       action : specifies analysis type with respect to action (batting, bowling, fielding)
       
          'batting' : returns batting statistics
@@ -225,3 +225,47 @@ Player Class
          
          'allround' : returns all-rounder statistics
          
+.. py:function:: get_summary_stats(self, format_num, action)
+
+   This function returns a player's summary statistics for a specific format and action, in a dataframe. 
+   
+   Parameters: 
+         format_num : integer that specifies the match format from which you want data from. 
+            1: test data
+            2: ODI data
+            3: T-20 data
+            
+           action : 
+           
+            'batting' : returns batting statistics
+
+            'bowling' : returns bowling statistics
+
+            'fielding' : returns fielding statistics (catches, stumps, etc.)
+
+            'allround' : returns all-rounder statistics
+            
+.. py:function:: get_overall_df(self, type_num, view, action)
+
+   This function returns a player's summary statistics for a specific format and action, in a dataframe. 
+   
+   Parameters: 
+         format_num : integer that specifies the match format from which you want data from. 
+            1: test data
+            2: ODI data
+            3: T-20 data
+            
+           action : 
+           
+            'batting' : returns batting statistics
+
+            'bowling' : returns bowling statistics
+
+            'fielding' : returns fielding statistics (catches, stumps, etc.)
+
+            'allround' : returns all-rounder statistics
+                      
+         
+
+
+      
