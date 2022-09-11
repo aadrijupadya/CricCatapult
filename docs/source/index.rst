@@ -169,6 +169,7 @@ Player Class
    The object is initalized using a player name, passed in as a string.
    
 .. py:function:: get_format_df(self, format_num, view, action)
+
    Parameters: 
       format_num: integer that specifies the match format from which you want data from. 
          1: test data
