@@ -264,7 +264,26 @@ Player Class
             'fielding' : returns fielding statistics (catches, stumps, etc.)
 
             'allround' : returns all-rounder statistics
-                      
+           view :
+           
+
+.. py:function:: get_career_df(self, type_num, view, action)
+
+
+.. py:function:: get_personal_info(self, arg):
+   This function returns useful player personal info such as name, birth info, and style of play.
+   Parameters
+   
+      - arg : string that specifies type of personal info
+         - full_name : returns Full name of player
+         - birth_info : returns information related to Birth of player such as birthplace, birthdate, etc.
+         - age : returns player age
+         - batting_style : returns right/left handedness with bat
+         - bowling_style : returns right/left handedness with ball
+         - playing_role : returns player position
+        
+      
+
          
 
 
