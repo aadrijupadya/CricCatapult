@@ -22,7 +22,7 @@ However, the rest of the classes are bug-free.
 ### Documentation
 https://criccatapult.readthedocs.io/en/latest/
 
-### Submitted to CMSAC 2022
+
 
 ### Download Stats
 [![Downloads](https://static.pepy.tech/personalized-badge/criccatapult?period=month&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/criccatapult)
