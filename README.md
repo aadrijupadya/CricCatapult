@@ -1,6 +1,6 @@
 # CricCatapult
 
-#### A novel cricket data package with a focus on data visualization, easily accessible data, and data analysis
+#### A novel cricket data package with a focus on data visualization, easily accessible data, and data analysis, accepted to present at CMSAC (Carnegie Mellon Sports Analytics Conference) 2022 
 
 Packaging: https://pypi.org/project/criccatapult/
 
