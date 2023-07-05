@@ -23,10 +23,3 @@ However, the rest of the classes are bug-free.
 https://criccatapult.readthedocs.io/en/latest/
 
 
-
-### Download Stats
-[![Downloads](https://static.pepy.tech/personalized-badge/criccatapult?period=month&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/criccatapult)
-
-[![Downloads](https://pepy.tech/badge/criccatapult/month)](https://pepy.tech/project/criccatapult)
-
-[![Downloads](https://pepy.tech/badge/criccatapult/week)](https://pepy.tech/project/criccatapult)
