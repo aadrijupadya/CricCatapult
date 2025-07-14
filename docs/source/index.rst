@@ -1,8 +1,3 @@
-.. CricCatapult documentation master file, created by
-   sphinx-quickstart on Sun Sep  4 14:45:50 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to CricCatapult's documentation!
 ========================================
 
@@ -13,11 +8,7 @@ Welcome to CricCatapult's documentation!
 Scroll down to view documentation.
 
 Available Documentation:
-Scoreboard and Cricsheet
-
-In Progress Documentation:
-Series, Player, Records, Location
-
+Scoreboard, Cricsheet, Player, Series, Records, Location
 
 Scoreboard Class
 ==================
@@ -162,6 +153,7 @@ Recent Match Data
       days : 2 for csv files from the past 2 days.
              7 for csv files from the past 7 days.
              30 for csv files from the past 30 days.
+
 Player Class
 ==================
 .. py:function:: __init__(self, player_name)
@@ -170,7 +162,8 @@ Player Class
    
 .. py:function:: get_format_df(self, format_num, view, action)
 
-   This function returns numerous individual player data (through a dataframe) that covers all formats, all actions (batting, bowling, fielding), and a   variety of views   (partnership by partnership, dismissal by dismissal, ground by ground, etc.)
+   This function returns numerous individual player data (through a dataframe) that covers all formats, all actions (batting, bowling, fielding), and a variety of views (partnership by partnership, dismissal by dismissal, ground by ground, etc.)
+   
    Parameters: 
       format_num : integer that specifies the match format from which you want data from. 
          1: test data
@@ -225,7 +218,7 @@ Player Class
          
          'allround' : returns all-rounder statistics
          
-.. py:function:: get_summary_stats(self, format_num, action)
+.. py:function:: get_summary_stats(self, format_num, view, action)
 
    This function returns a player's summary statistics for a specific format and action, in a dataframe. 
    
@@ -235,7 +228,9 @@ Player Class
             2: ODI data
             3: T-20 data
             
-           action : 
+         view : specifies the view of the data (match-by-match, inning-by-inning, partnership, etc.)
+            
+         action : 
            
             'batting' : returns batting statistics
 
@@ -247,15 +242,24 @@ Player Class
             
 .. py:function:: get_overall_df(self, type_num, view, action)
 
-   This function returns a player's summary statistics for a specific format and action, in a dataframe. 
+   This function returns a player's overall statistics across all formats for a specific action, in a dataframe. 
    
    Parameters: 
-         format_num : integer that specifies the match format from which you want data from. 
-            1: test data
-            2: ODI data
-            3: T-20 data
+         type_num : integer that specifies which table to return from the overall statistics page
             
-           action : 
+         view : specifies the view of the data
+         
+            'innings' : returns inning-by-inning data
+            
+            'match' : returns match-by-match data
+            
+            'cumulative' : returns cumulative data
+            
+            'series' : returns series-by-series data
+            
+            'ground' : returns ground-by-ground data
+            
+         action : 
            
             'batting' : returns batting statistics
 
@@ -264,27 +268,263 @@ Player Class
             'fielding' : returns fielding statistics (catches, stumps, etc.)
 
             'allround' : returns all-rounder statistics
-           view :
-           
 
-.. py:function:: get_career_df(self, type_num, view, action)
+.. py:function:: get_career_df(self)
 
+   This function returns a player's career overview statistics in a dataframe format.
 
-.. py:function:: get_personal_info(self, arg):
+.. py:function:: get_personal_info(self, arg)
+
    This function returns useful player personal info such as name, birth info, and style of play.
-   Parameters
    
-      - arg : string that specifies type of personal info
-         - full_name : returns Full name of player
-         - birth_info : returns information related to Birth of player such as birthplace, birthdate, etc.
-         - age : returns player age
-         - batting_style : returns right/left handedness with bat
-         - bowling_style : returns right/left handedness with ball
-         - playing_role : returns player position
-        
-      
+   Parameters:
+   
+      arg : string that specifies type of personal info
+         'full_name' : returns Full name of player
+         'birth_info' : returns information related to Birth of player such as birthplace, birthdate, etc.
+         'age' : returns player age
+         'batting_style' : returns right/left handedness with bat
+         'bowling_style' : returns right/left handedness with ball
+         'playing_role' : returns player position
 
-         
+.. py:function:: get_teams(self)
+
+   This function returns a list of teams the player has represented.
+
+.. py:function:: get_description(self)
+
+   This function returns a text description/biography of the player.
+
+.. py:function:: get_overview_df(self, pos)
+
+   This function returns overview statistics for the player from their profile page.
+   
+   Parameters:
+      pos : integer position of the table to return from the player's profile page
+
+Series Class
+==================
+.. py:function:: __init__(self, series_id=None, match_id=None)
+
+   The object is initialized using a series ID and match ID, both passed in as integers.
+   
+   Parameters:
+      series_id : unique identifier for the cricket series
+      match_id : unique identifier for the specific match within the series
+
+.. py:function:: batting_df(self, bat_first)
+
+   Returns batting scorecard data for limited overs matches (ODI/T20).
+   
+   Parameters:
+      bat_first : boolean indicating if the team batting first is desired (True) or second (False)
+
+.. py:function:: bowling_df(self, bowl_first)
+
+   Returns bowling figures data for limited overs matches (ODI/T20).
+   
+   Parameters:
+      bowl_first : boolean indicating if the team bowling first is desired (True) or second (False)
+
+.. py:function:: test_bat(self, bat_first, inning)
+
+   Returns batting scorecard data for Test matches by inning.
+   
+   Parameters:
+      bat_first : boolean indicating if the team batting first is desired
+      inning : integer (1 or 2) indicating which inning
+
+.. py:function:: test_bowl(self, bowl_first, inning)
+
+   Returns bowling figures data for Test matches by inning.
+   
+   Parameters:
+      bowl_first : boolean indicating if the team bowling first is desired
+      inning : integer (1 or 2) indicating which inning
+
+.. py:function:: get_general_df_test(self)
+
+   Returns general match information and statistics for Test matches.
+
+.. py:function:: get_general_df(self)
+
+   Returns general match information and statistics for limited overs matches.
+
+.. py:function:: get_standings(self)
+
+   Returns current tournament/series standings in dataframe format.
+
+.. py:function:: test_df(self)
+
+   Returns Test match specific data in dataframe format.
+
+.. py:function:: current_series(self)
+
+   Returns information about currently ongoing cricket series worldwide.
+
+.. py:function:: get_series_by_year(self, year)
+
+   Returns cricket series that took place in a specific year.
+   
+   Parameters:
+      year : integer year for which to retrieve series information
+
+.. py:function:: get_results_by_year(self, year, format)
+
+   Returns match results for a specific year and format.
+   
+   Parameters:
+      year : integer year for results
+      format : integer format code (1=Test, 2=ODI, 3=T20)
+
+.. py:function:: get_series_results(self, number)
+
+   Returns series results based on a specific record number.
+   
+   Parameters:
+      number : integer record identifier
+
+.. py:function:: get_bowler_analysis(self)
+
+   Returns detailed bowling analysis and statistics for the match.
+
+.. py:function:: manhattan(self)
+
+   Generates a Manhattan plot visualization showing runs scored per over by both teams, including wicket markers.
+
+.. py:function:: worm(self)
+
+   Generates a Worm plot visualization showing cumulative runs scored by both teams over the course of the match.
+
+.. py:function:: mvp(self)
+
+   Returns the Most Valuable Player (MVP) statistics for the match in dataframe format.
+
+.. py:function:: pitchmap(self, list1, list2, speeds)
+
+   Generates a pitch map visualization showing ball locations and speeds.
+   
+   Parameters:
+      list1 : list of x-coordinates for ball positions
+      list2 : list of y-coordinates for ball positions
+      speeds : list of ball speeds corresponding to each position
+
+Records Class
+==================
+.. py:function:: __init__(self)
+
+   Initializes the Records object for accessing cricket records and statistics.
+
+.. py:function:: get_records_by_team(self, team_id, record, type, format)
+
+   Returns cricket records filtered by team.
+   
+   Parameters:
+      team_id : unique identifier for the team
+      record : type of record (e.g., 'most_runs_career', 'most_wickets_career')
+      type : category of record ('batting', 'bowling', 'fielding')
+      format : match format (1=Test, 2=ODI, 3=T20)
+
+.. py:function:: get_records_by_tournament(self, type, record, tourney_id)
+
+   Returns cricket records filtered by tournament.
+   
+   Parameters:
+      type : category of record ('batting', 'bowling', 'fielding')
+      record : type of record to retrieve
+      tourney_id : unique identifier for the tournament
+
+.. py:function:: get_records_h2h(self, team_id1, team_id2, record, type)
+
+   Returns head-to-head records between two teams.
+   
+   Parameters:
+      team_id1 : unique identifier for first team
+      team_id2 : unique identifier for second team
+      record : type of record to retrieve
+      type : category of record ('batting', 'bowling', 'fielding')
+
+.. py:function:: get_records_year(self, year, record, type)
+
+   Returns cricket records for a specific year.
+   
+   Parameters:
+      year : integer year for records
+      record : type of record to retrieve
+      type : category of record ('batting', 'bowling', 'fielding')
+
+.. py:function:: get_records_ground(self, type, record, ground_id)
+
+   Returns cricket records for a specific ground/venue.
+   
+   Parameters:
+      type : category of record ('batting', 'bowling', 'fielding')
+      record : type of record to retrieve
+      ground_id : unique identifier for the ground
+
+.. py:function:: get_general_records(self, record_id)
+
+   Returns general cricket records based on record ID.
+   
+   Parameters:
+      record_id : unique identifier for the specific record type
+
+.. py:function:: get_ipl_records(self, format, record)
+
+   Returns Indian Premier League (IPL) specific records.
+   
+   Parameters:
+      format : match format for IPL records
+      record : type of record to retrieve
+
+.. py:function:: get_bbl_records(self, format, record)
+
+   Returns Big Bash League (BBL) specific records.
+   
+   Parameters:
+      format : match format for BBL records
+      record : type of record to retrieve
+
+.. py:function:: get_et20_records(self, format, record)
+
+   Returns Euro T20 League specific records.
+   
+   Parameters:
+      format : match format for Euro T20 records
+      record : type of record to retrieve
+
+.. py:function:: get_psl_records(self, format, record)
+
+   Returns Pakistan Super League (PSL) specific records.
+   
+   Parameters:
+      format : match format for PSL records
+      record : type of record to retrieve
+
+Location Class
+==================
+.. py:function:: __init__(self, match_id)
+
+   Initializes the Location object with a specific match ID to analyze venue information.
+   
+   Parameters:
+      match_id : unique identifier for the cricket match
+
+.. py:function:: get_location(self)
+
+   Returns the cricket ground/venue name where the match is being played.
+
+.. py:function:: get_map(self)
+
+   Generates and returns an interactive map showing the location of the cricket ground using Folium mapping library.
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 
       
