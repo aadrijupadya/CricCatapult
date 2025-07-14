@@ -23,6 +23,45 @@ Cricket data from Test matches, ODIs, T20s, IPL, Big Bash League, Pakistan Super
 
 **Perfect for:** Cricket analysts, data scientists, sports journalists, fantasy cricket players, researchers, and cricket enthusiasts who need comprehensive cricket data and analytics.
 
+Installation
+============
+
+**Quick Install**
+
+Install CricCatapult from PyPI using pip:
+
+.. code-block:: bash
+
+   pip install criccatapult
+
+**Requirements:**
+
+* Python 3.6+
+* Works on Windows, macOS, and Linux
+
+**Optional Dependencies**
+
+For full Location class functionality (interactive maps), install geopandas:
+
+.. code-block:: bash
+
+   pip install geopandas
+
+**Verify Installation**
+
+.. code-block:: python
+
+   from CricCatapult import Scoreboard, Player, Series, Records, Location
+   
+   # Get live cricket scores
+   scores = Scoreboard()
+   print(scores.scores())
+   
+   # Analyze a player
+   player = Player("Virat Kohli")
+   stats = player.get_summary_stats(format_num=2, view='match', action='batting')
+   print(stats)
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
