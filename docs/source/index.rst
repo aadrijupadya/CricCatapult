@@ -77,24 +77,91 @@ Scoreboard Class
 
    This function outputs a pandas series of all matches in action around the world. To check the live score of an individual match, simply use indexing to get the full description of the match.
    
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Scoreboard
+      
+      # Get live cricket scores
+      scoreboard = Scoreboard()
+      live_scores = scoreboard.scores()
+      print(live_scores)
+      
+      # Access specific match
+      print(live_scores[0])  # First match details
+   
 .. py:function:: scores_df()
 
    Gets live scores in dataframe format.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Scoreboard
+      
+      # Get live scores as DataFrame
+      scoreboard = Scoreboard()
+      scores_df = scoreboard.scores_df()
+      print(scores_df.head())
+      
+      # Filter ongoing matches
+      ongoing = scores_df[scores_df['Status'] == 'Live']
+      print(ongoing)
   
 Cricsheet Class
 ==================
 .. py:function:: all_matches_json()
 
    Downloads matches from every league in JSON format. Each match will download as an individual file.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Cricsheet
+      
+      # Download all matches in JSON format
+      cricsheet = Cricsheet()
+      cricsheet.all_matches_json()
+      # Files will be downloaded to current directory
 
 .. py:function:: all_matches_yaml()
 
    Downloads matches from every league in YAML format. Each match will download as an individual file.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Cricsheet
+      
+      # Download all matches in YAML format
+      cricsheet = Cricsheet()
+      cricsheet.all_matches_yaml()
 
 .. py:function:: all_matches_csv(gender)
 
    Parameters:
       gender : "male" or "female" for matches only for that gender, or "all" for all matches in csv format.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Cricsheet
+      
+      cricsheet = Cricsheet()
+      
+      # Download all men's matches
+      cricsheet.all_matches_csv("male")
+      
+      # Download all women's matches
+      cricsheet.all_matches_csv("female")
+      
+      # Download all matches (both genders)
+      cricsheet.all_matches_csv("all")
 
 .. py:function:: all_matches_csv2(gender)
 
@@ -165,10 +232,31 @@ Domestic League Data
 .. py:function:: IPL_csv()
 
    Downloads all matches from the Indian Premier League in csv format.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Cricsheet
+      
+      # Download IPL match data
+      cricsheet = Cricsheet()
+      cricsheet.IPL_csv()
+      print("IPL data downloaded successfully!")
 
 .. py:function:: IPL_csv2()
 
    Downloads all matches from the Indian Premier League in a different csv format.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Cricsheet
+      
+      # Download IPL data in alternative format
+      cricsheet = Cricsheet()
+      cricsheet.IPL_csv2()
    
 .. py:function:: lankaleague_csv()
 
@@ -221,9 +309,41 @@ Player Class
 
    The object is initalized using a player name, passed in as a string.
    
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Player
+      
+      # Initialize player objects
+      virat = Player("Virat Kohli")
+      dhoni = Player("MS Dhoni")
+      babar = Player("Babar Azam")
+   
 .. py:function:: get_format_df(self, format_num, view, action)
 
    This function returns numerous individual player data (through a dataframe) that covers all formats, all actions (batting, bowling, fielding), and a variety of views (partnership by partnership, dismissal by dismissal, ground by ground, etc.)
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Player
+      
+      # Analyze Virat Kohli's ODI batting performance
+      player = Player("Virat Kohli")
+      
+      # Get match-by-match ODI batting stats
+      odi_batting = player.get_format_df(format_num=2, view='match', action='batting')
+      print(odi_batting.head())
+      
+      # Get Test bowling figures by series
+      test_bowling = player.get_format_df(format_num=1, view='series', action='bowling')
+      print(test_bowling)
+      
+      # Get T20 fielding stats by ground
+      t20_fielding = player.get_format_df(format_num=3, view='ground', action='fielding')
+      print(t20_fielding)
    
    Parameters: 
       format_num : integer that specifies the match format from which you want data from. 
@@ -338,6 +458,22 @@ Player Class
 
    This function returns useful player personal info such as name, birth info, and style of play.
    
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Player
+      
+      player = Player("Virat Kohli")
+      
+      # Get different personal information
+      print("Full Name:", player.get_personal_info("full_name"))
+      print("Birth Info:", player.get_personal_info("birth_info"))
+      print("Age:", player.get_personal_info("age"))
+      print("Batting Style:", player.get_personal_info("batting_style"))
+      print("Bowling Style:", player.get_personal_info("bowling_style"))
+      print("Playing Role:", player.get_personal_info("playing_role"))
+   
    Parameters:
    
       arg : string that specifies type of personal info
@@ -351,6 +487,17 @@ Player Class
 .. py:function:: get_teams(self)
 
    This function returns a list of teams the player has represented.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Player
+      
+      player = Player("MS Dhoni")
+      teams = player.get_teams()
+      print("Teams represented:", teams)
+      # Output: India, Chennai Super Kings, Rising Pune Supergiant, etc.
 
 .. py:function:: get_description(self)
 
@@ -369,6 +516,18 @@ Series Class
 
    The object is initialized using a series ID and match ID, both passed in as integers.
    
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Series
+      
+      # Initialize with specific series and match IDs
+      # Example: India vs Australia ODI series
+      series = Series(series_id=1298423, match_id=1298436)
+      
+      # You can find these IDs from ESPNCricinfo URLs
+   
    Parameters:
       series_id : unique identifier for the cricket series
       match_id : unique identifier for the specific match within the series
@@ -376,6 +535,24 @@ Series Class
 .. py:function:: batting_df(self, bat_first)
 
    Returns batting scorecard data for limited overs matches (ODI/T20).
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Series
+      
+      series = Series(series_id=1298423, match_id=1298436)
+      
+      # Get first innings batting scorecard
+      first_innings = series.batting_df(bat_first=True)
+      print("First Innings Batting:")
+      print(first_innings)
+      
+      # Get second innings batting scorecard
+      second_innings = series.batting_df(bat_first=False)
+      print("Second Innings Batting:")
+      print(second_innings)
    
    Parameters:
       bat_first : boolean indicating if the team batting first is desired (True) or second (False)
@@ -452,14 +629,57 @@ Series Class
 .. py:function:: manhattan(self)
 
    Generates a Manhattan plot visualization showing runs scored per over by both teams, including wicket markers.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Series
+      import matplotlib.pyplot as plt
+      
+      # Create Manhattan plot for a T20 match
+      series = Series(series_id=1298423, match_id=1298436)
+      series.manhattan()
+      plt.title("Manhattan Plot - Runs Per Over")
+      plt.show()
+      
+      # Shows bar chart with runs per over and wicket markers
 
 .. py:function:: worm(self)
 
    Generates a Worm plot visualization showing cumulative runs scored by both teams over the course of the match.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Series
+      import matplotlib.pyplot as plt
+      
+      # Create Worm plot for match progression
+      series = Series(series_id=1298423, match_id=1298436)
+      series.worm()
+      plt.title("Worm Plot - Cumulative Runs")
+      plt.show()
+      
+      # Shows line graph of cumulative runs with wicket markers
 
 .. py:function:: mvp(self)
 
    Returns the Most Valuable Player (MVP) statistics for the match in dataframe format.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Series
+      
+      series = Series(series_id=1298423, match_id=1298436)
+      mvp_stats = series.mvp()
+      print("Most Valuable Player Statistics:")
+      print(mvp_stats)
+      
+      # Shows player impact ratings and performance metrics
 
 .. py:function:: pitchmap(self, list1, list2, speeds)
 
@@ -475,10 +695,47 @@ Records Class
 .. py:function:: __init__(self)
 
    Initializes the Records object for accessing cricket records and statistics.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Records
+      
+      # Initialize Records object
+      records = Records()
 
 .. py:function:: get_records_by_team(self, team_id, record, type, format)
 
    Returns cricket records filtered by team.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Records
+      
+      records = Records()
+      
+      # Get India's batting records in ODIs (team_id=6)
+      india_odi_batting = records.get_records_by_team(
+          team_id=6, 
+          record='most_runs_career', 
+          type='batting', 
+          format=2
+      )
+      print("India ODI Batting Records:")
+      print(india_odi_batting.head())
+      
+      # Get Australia's bowling records in Tests (team_id=2)
+      aus_test_bowling = records.get_records_by_team(
+          team_id=2, 
+          record='most_wickets_career', 
+          type='bowling', 
+          format=1
+      )
+      print("Australia Test Bowling Records:")
+      print(aus_test_bowling.head())
    
    Parameters:
       team_id : unique identifier for the team
@@ -534,6 +791,30 @@ Records Class
 
    Returns Indian Premier League (IPL) specific records.
    
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Records
+      
+      records = Records()
+      
+      # Get IPL batting records (most runs)
+      ipl_batting = records.get_ipl_records(
+          format='batting', 
+          record='most_runs_career'
+      )
+      print("IPL All-time Run Scorers:")
+      print(ipl_batting.head())
+      
+      # Get IPL bowling records (most wickets)
+      ipl_bowling = records.get_ipl_records(
+          format='bowling', 
+          record='most_wickets_career'
+      )
+      print("IPL All-time Wicket Takers:")
+      print(ipl_bowling.head())
+   
    Parameters:
       format : match format for IPL records
       record : type of record to retrieve
@@ -568,16 +849,54 @@ Location Class
 
    Initializes the Location object with a specific match ID to analyze venue information.
    
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Location
+      
+      # Initialize with a match ID from ESPNCricinfo
+      # Example: India vs Australia match
+      location = Location(match_id="1329821")
+   
    Parameters:
       match_id : unique identifier for the cricket match
 
 .. py:function:: get_location(self)
 
    Returns the cricket ground/venue name where the match is being played.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Location
+      
+      location = Location(match_id="1329821")
+      venue = location.get_location()
+      print("Match Venue:", venue)
+      # Output: "Melbourne Cricket Ground" or similar
 
 .. py:function:: get_map(self)
 
    Generates and returns an interactive map showing the location of the cricket ground using Folium mapping library.
+   
+   **Example:**
+   
+   .. code-block:: python
+   
+      from CricCatapult import Location
+      
+      # Create interactive map of cricket ground
+      location = Location(match_id="1329821")
+      venue_map = location.get_map()
+      
+      # Save the map
+      venue_map.save("cricket_ground_map.html")
+      print("Interactive map saved as cricket_ground_map.html")
+      
+      # Display in Jupyter notebook
+      # venue_map  # This will render the map inline
 
 
 Indices and tables
