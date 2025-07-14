@@ -1,0 +1,9 @@
+sphinx>=4.0
+sphinx-rtd-theme
+pandas
+numpy
+matplotlib
+requests
+beautifulsoup4
+folium
+geocoder 
