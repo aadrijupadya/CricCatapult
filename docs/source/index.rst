@@ -6,6 +6,23 @@
 Welcome to CricCatapult's documentation!
 ========================================
 
+**CricCatapult** is a comprehensive Python library for cricket data analysis, statistics, and visualization. Access live cricket scores, historical match data, player statistics, and detailed cricket records from international and domestic leagues worldwide.
+
+**Key Features:**
+
+* **Live Scores & Real-time Data**: Get live cricket scores and match updates from around the world
+* **Comprehensive Match Data**: Download cricket match data in JSON, YAML, and CSV formats from all major leagues (IPL, BBL, PSL, CPL, and more)
+* **Player Analytics**: Detailed player statistics, career records, batting/bowling analysis, and performance metrics across all formats (Test, ODI, T20)
+* **Series & Tournament Analysis**: Match scorecards, team statistics, head-to-head records, and tournament standings
+* **Advanced Visualizations**: Generate Manhattan plots, Worm graphs, pitch maps, and interactive venue maps
+* **Historical Records**: Access cricket records by team, tournament, year, ground, and player performance
+* **Location Intelligence**: Cricket ground information with interactive mapping and venue analysis
+
+**Supported Data Sources:**
+Cricket data from Test matches, ODIs, T20s, IPL, Big Bash League, Pakistan Super League, Caribbean Premier League, Bangladesh Premier League, Afghanistan Premier League, Lanka Premier League, Women's cricket, and more.
+
+**Perfect for:** Cricket analysts, data scientists, sports journalists, fantasy cricket players, researchers, and cricket enthusiasts who need comprehensive cricket data and analytics.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
