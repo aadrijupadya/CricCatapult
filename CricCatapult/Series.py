@@ -7,6 +7,7 @@ import requests
 import seaborn as sns
 import pygame
 from bs4 import BeautifulSoup
+from .SQLManager import SQLManager
 pd.options.display.max_columns = None
 pd.options.display.max_rows = None
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -40,7 +41,10 @@ def clean(df, type):
 
 
 class Series(object):
-    def __init__(self, series_id=None, match_id=None):
+    def __init__(self, series_id=None, match_id=None, db_path=None):
+        # Initialize SQL manager if database path is provided
+        self.db_manager = SQLManager(db_path) if db_path else None
+        
         if series_id is not None and match_id is not None:
             self.series_id = series_id
             self.match_id = match_id
@@ -346,6 +350,162 @@ class Series(object):
             return ax
         pitch = pitch(self.list1, self.list2, self.speeds)
         return pitch
+    
+    def save_match_to_database(self, match_data=None):
+        """
+        Save match data to database.
+        
+        Args:
+            match_data (dict, optional): Match information to store
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not self.db_manager:
+            print("Database manager not initialized. Provide db_path in constructor.")
+            return False
+            
+        if not hasattr(self, 'match_id') or not hasattr(self, 'series_id'):
+            print("Match ID and Series ID are required to save match data.")
+            return False
+            
+        try:
+            if match_data is None:
+                match_data = {
+                    'series_id': self.series_id,
+                    'date': '',  # Could be extracted from page if needed
+                    'format': '',  # Could be determined from URL patterns
+                    'team1': '',  # Could be extracted from scorecard
+                    'team2': '',  # Could be extracted from scorecard
+                    'result': '',  # Could be extracted from page
+                    'venue': ''  # Could be extracted from page
+                }
+            
+            return self.db_manager.store_match_data(self.match_id, match_data)
+        except Exception as e:
+            print(f"Error saving match to database: {e}")
+            return False
+    
+    def save_batting_stats_to_database(self, batting_df, innings=1, team_players=None):
+        """
+        Save batting statistics to database.
+        
+        Args:
+            batting_df (pd.DataFrame): Batting statistics DataFrame
+            innings (int): Innings number
+            team_players (dict): Mapping of player names to player IDs
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not self.db_manager:
+            print("Database manager not initialized. Provide db_path in constructor.")
+            return False
+            
+        try:
+            for _, row in batting_df.iterrows():
+                # Extract player name (assuming it's in the first column)
+                player_name = row.iloc[0] if len(row) > 0 else ''
+                
+                # Try to get player ID from mapping or use name as fallback
+                player_id = team_players.get(player_name, player_name) if team_players else player_name
+                
+                stats_data = {
+                    'player_id': player_id,
+                    'match_id': self.match_id,
+                    'series_id': self.series_id,
+                    'innings': innings,
+                    'runs': self._safe_int(row.get('Runs', row.get('R', 0))),
+                    'balls_faced': self._safe_int(row.get('Balls', row.get('B', 0))),
+                    'fours': self._safe_int(row.get('4s', 0)),
+                    'sixes': self._safe_int(row.get('6s', 0)),
+                    'strike_rate': self._safe_float(row.get('SR', 0.0)),
+                    'dismissal': str(row.get('Dismissal', ''))
+                }
+                
+                self.db_manager.store_batting_stats(stats_data)
+            
+            return True
+        except Exception as e:
+            print(f"Error saving batting stats to database: {e}")
+            return False
+    
+    def save_bowling_stats_to_database(self, bowling_df, innings=1, team_players=None):
+        """
+        Save bowling statistics to database.
+        
+        Args:
+            bowling_df (pd.DataFrame): Bowling statistics DataFrame
+            innings (int): Innings number
+            team_players (dict): Mapping of player names to player IDs
+            
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not self.db_manager:
+            print("Database manager not initialized. Provide db_path in constructor.")
+            return False
+            
+        try:
+            for _, row in bowling_df.iterrows():
+                # Extract player name from BOWLING column
+                bowling_info = row.get('BOWLING', '')
+                player_name = bowling_info.split(' ')[0] if bowling_info else ''
+                
+                # Try to get player ID from mapping or use name as fallback
+                player_id = team_players.get(player_name, player_name) if team_players else player_name
+                
+                # Parse bowling figures (assuming format like "10-2-45-3")
+                bowling_parts = bowling_info.split('-') if '-' in bowling_info else []
+                
+                stats_data = {
+                    'player_id': player_id,
+                    'match_id': self.match_id,
+                    'series_id': self.series_id,
+                    'innings': innings,
+                    'overs': self._safe_float(bowling_parts[0]) if len(bowling_parts) > 0 else 0.0,
+                    'maidens': self._safe_int(bowling_parts[1]) if len(bowling_parts) > 1 else 0,
+                    'runs_conceded': self._safe_int(bowling_parts[2]) if len(bowling_parts) > 2 else 0,
+                    'wickets': self._safe_int(bowling_parts[3]) if len(bowling_parts) > 3 else 0,
+                    'economy_rate': self._safe_float(row.get('ECON', 0.0))
+                }
+                
+                self.db_manager.store_bowling_stats(stats_data)
+            
+            return True
+        except Exception as e:
+            print(f"Error saving bowling stats to database: {e}")
+            return False
+    
+    def get_match_scorecard_from_db(self):
+        """
+        Get match scorecard from database.
+        
+        Returns:
+            dict: Batting and bowling scorecards
+        """
+        if not self.db_manager or not hasattr(self, 'match_id'):
+            print("Database manager not initialized or match ID not set.")
+            return {}
+            
+        return {
+            'batting': self.db_manager.get_match_batting_scorecard(self.match_id),
+            'bowling': self.db_manager.get_match_bowling_figures(self.match_id)
+        }
+    
+    def _safe_int(self, value, default=0):
+        """Safely convert value to int."""
+        try:
+            return int(str(value).replace('*', '').strip()) if value else default
+        except (ValueError, TypeError):
+            return default
+    
+    def _safe_float(self, value, default=0.0):
+        """Safely convert value to float."""
+        try:
+            return float(str(value).strip()) if value else default
+        except (ValueError, TypeError):
+            return default
 
 
 # depending on IDE, might need to print or not

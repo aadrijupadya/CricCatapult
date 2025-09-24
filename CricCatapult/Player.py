@@ -3,11 +3,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import requests
 from bs4 import BeautifulSoup
+from .SQLManager import SQLManager
 
 
 class Player(object):
 
-    def __init__(self, player_name):
+    def __init__(self, player_name, db_path=None):
+        # Initialize SQL manager if database path is provided
+        self.db_manager = SQLManager(db_path) if db_path else None
+        self.player_name = player_name
+        
         # use
         self.url = "http://search.espncricinfo.com/ci/content/player/search.html?search=" + \
             player_name.lower().replace(" ", "+") + "&x=0&y=0"
@@ -103,6 +108,64 @@ class Player(object):
         df = pd.read_html(
             f'https://www.espncricinfo.com/player/player-name-{self.player_id}')[pos]
         return df
+    
+    def save_to_database(self):
+        """
+        Save player data to database.
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not self.db_manager:
+            print("Database manager not initialized. Provide db_path in constructor.")
+            return False
+            
+        try:
+            player_data = {
+                'name': self.player_name,
+                'full_name': self.get_personal_info('full_name'),
+                'birth_info': self.get_personal_info('birth_info'),
+                'age': self.get_personal_info('age'),
+                'batting_style': self.get_personal_info('batting_style'),
+                'bowling_style': self.get_personal_info('bowling_style'),
+                'playing_role': self.get_personal_info('playing_role'),
+                'teams': self.get_teams(),
+                'description': self.get_description()
+            }
+            
+            return self.db_manager.store_player_data(self.player_id, player_data)
+        except Exception as e:
+            print(f"Error saving player to database: {e}")
+            return False
+    
+    def get_from_database(self):
+        """
+        Retrieve player data from database.
+        
+        Returns:
+            dict or None: Player data if found, None otherwise
+        """
+        if not self.db_manager:
+            print("Database manager not initialized. Provide db_path in constructor.")
+            return None
+            
+        return self.db_manager.get_player_data(self.player_id)
+    
+    def get_career_stats_from_db(self, stat_type='batting'):
+        """
+        Get career statistics from database.
+        
+        Args:
+            stat_type (str): Type of stats ('batting' or 'bowling')
+            
+        Returns:
+            pd.DataFrame: Career statistics
+        """
+        if not self.db_manager:
+            print("Database manager not initialized. Provide db_path in constructor.")
+            return pd.DataFrame()
+            
+        return self.db_manager.get_player_stats(self.player_id, stat_type)
 
 
 # print(Player('Mithali Raj').get_description())

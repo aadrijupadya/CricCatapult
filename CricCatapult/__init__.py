@@ -4,3 +4,4 @@ from CricCatapult.Location import Location
 from CricCatapult.Cricsheet import Cricsheet
 from CricCatapult.Player import Player
 from CricCatapult.Scoreboard import Scoreboard
+from CricCatapult.SQLManager import SQLManager

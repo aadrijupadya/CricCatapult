@@ -7,9 +7,9 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.8'
-DESCRIPTION = 'Package for cricket analytics'
-LONG_DESCRIPTION = 'Visualizaiton, Analysis, and more (will add later)'
+VERSION = '0.0.9'
+DESCRIPTION = 'Package for cricket analytics with SQL integration'
+LONG_DESCRIPTION = 'Cricket analytics package with data visualization, analysis, and SQL database integration for local data storage and advanced querying capabilities.'
 
 # Setting up
 setup(
